@@ -3,9 +3,7 @@ using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models
 {
-    /// <summary>
-    /// The Cart class
-    /// </summary>
+  
     public class Cart : ICart
     {
         
@@ -21,8 +19,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
-            // DONE OD
+           
             CartLine cartLine = null;
 
             foreach (var line in _lignesPanier)
@@ -61,9 +58,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public double GetTotalValue()
         {
-            // TODO implement the method
-            // DONE OD
-            return GetCartLineList().Sum(x => x.Product.Price);
+            // Calculate total by summing product price multiplied by quantity
+            return GetCartLineList().Sum(x => x.Product.Price * x.Quantity);
         }
 
         /// <summary>
@@ -84,9 +80,9 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            // DONE OD
-            return GetCartLineList().Where(x => x.Product.Id == productId).FirstOrDefault().Product;
+            // Return the product if the cart contains the product ID; otherwise return null
+            var line = GetCartLineList().FirstOrDefault(x => x.Product.Id == productId);
+            return line?.Product;
         }
 
         /// <summary>

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+   
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,7 +43,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+     
     <PackageReference Include="Microsoft.Extensions.Localization" Version="2.1.1" />
   </ItemGroup>
+
+<!-- Views are implicitly included by the SDK, remove explicit Content Include to avoid duplicate items. -->
 
 </Project>
