@@ -7,7 +7,10 @@ namespace P2FixAnAppDotNetCode.Components
     {
         public IViewComponentResult Invoke(ILanguageService languageService)
         {
-            return View(languageService);
+            // The view expects a LanguageViewModel for the select binding.
+            // We only use the ILanguageService here for switching logic, but
+            // a view model must be provided to the view for correct binding.
+            return View(new Models.ViewModels.LanguageViewModel());
         }
     }
 }

@@ -112,6 +112,15 @@ public decimal GetTotalValue()
 
 > Après correction : test ajouter 1 puis 2 unités et vérifier affichage du total.
 
+**Étapes de reproduction** :
+
+1. Lancer l'application (dotnet run).
+2. Naviguer sur la page Produits (`Product/Index`).
+3. Ajouter un produit avec quantité 1 au panier, puis retourner à `Cart/Index` pour vérifier total.
+4. Revenir à la page Produits, ajouter 2 unités (ou clique deux fois sur 'Ajouter au panier').
+5. Vérifier que le total du panier est bien le `Price * Quantity` et non seulement la somme des prix unitaires.
+6. Vous pouvez aussi traduire les pages en fonction de la langue choisie 
+
 ---
 
 ### Bug #2 — Sélecteur de langue (localisation) — diagnostic et résolution
@@ -159,21 +168,21 @@ Pendant le debug, navigue vers la page d’accueil et observe l'ordre d'exécuti
 * `P2FixAnAppDotNetCode.Models`
 
 **Classes visitées**
-Program
-Startup
-ProductController
-ProductService
-ProductRepository
-Product (model)
+* `Program`
+* `Startup`
+* `ProductController`
+* `ProductService`
+* `ProductRepository`
+* `Product (model)`
 
 **Méthodes visitées**
-Program.Main()
-Startup.Startup()
-Startup.ConfigureServices()
-Startup.Configure()
-ProductController.Index()
-ProductService.GetAllProducts()
-ProductRepository.GetAllProducts()
+* `Program.Main()`
+* `Startup.Startup()`
+* `Startup.ConfigureServices()`
+* `Startup.Configure()`
+* `ProductController.Index()`
+* `ProductService.GetAllProducts()`
+* `ProductRepository.GetAllProducts()`
 
 **Principales classes et méthodes (ordre typique)**
 
@@ -278,7 +287,7 @@ Google drive
 * Ajouter fichiers de ressources : `Resources/Views.Shared.fr.resx`, `Resources/Views.Shared.wo.resx`, etc.
 * Configurer `RequestLocalizationOptions` dans `Startup.Configure`.
 * Ajouter sélecteur de langue (`LanguageSelector`) pour changer la culture.
-
+C'est fait ,nous pouvons le verifier en selectionnant une langue ,nous verrons les changements au niveau des header des tables etc . 
 
 ## 19. Ressources utiles
 
